@@ -1,11 +1,19 @@
 export default function orderByProps(obj, sortDirection) {
-    const propArray = Object.keys(obj)
-    .filter(key => !sortDirection.includes(key))
-    .sort()
-    .map(key => Object.assign({}, {'key' : key, 'value' : obj[key]}))
+    const sortedArray = [];
+    const sortedArrayByAlphabet = [];
+    sortDirection.forEach((key) => {
+        if (key in obj) {
+            sortedArray.push({ key, value: obj[key] });
+        }
+    });
 
-    return Object.keys(obj)
-    .filter(key => sortDirection.includes(key))
-    .map(key => Object.assign({}, {'key' : key, 'value' : obj[key]}))
-    .concat(propArray);
+    for (const key in obj) {
+        if (!sortDirection.includes(key)) {
+            sortedArrayByAlphabet.push({ key, value: obj[key] });
+        }
+    };
+
+    sortedArrayByAlphabet.sort((a, b) => ( a.key > b.key ? 1 : -1 ));
+    
+    return [...sortedArray, ...sortedArrayByAlphabet];
 };
