@@ -14,4 +14,24 @@ test('seatch', () => {
         { key: 'health', value: 10 }
     ];
     expect(received).toEqual(expected);
-});s
+});
+
+// test('seatch', () => {
+//     const obj = {
+//         name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
+//     };
+
+//     const received = obj.hasOwnProperty('key')
+
+//     expect(received).toEqual(true);
+// });
+
+// test('seatch', () => {
+//     const obj = {
+//         name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
+//     };
+//     const args = null
+//     const received = orderByProps(obj, args);
+
+//     expect(received).toBe(false);
+// });
